@@ -1,26 +1,54 @@
+
 "use client";
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
+
 export default function TodoPage() {
+  const router = useRouter();
+  const { user, isLoading, logout } = useAuth();
+
+  useEffect(() => {
+    if (!isLoading && !user) {
+      router.push("/auth/login");
+    }
+  }, [user, isLoading, router]);
+
+  if (isLoading) {
+    return <div className="min-h-screen flex items-center justify-center">Chargement...</div>;
+  }
+
+  if (!user) {
+    return null;
+  }
+
   return (
     <main className="min-h-screen bg-gray-50 flex items-start justify-center pt-20 px-4">
       <div className="w-full max-w-md">
-
-        <h1 className="text-2xl font-bold text-gray-800 mb-6">
-          Liste de tâches
-        </h1>
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-2xl font-bold text-gray-800">
+            Liste de tâches
+          </h1>
+          <div className="flex items-center gap-3">
+            <span className="text-sm text-gray-600">{user.name}</span>
+            <button
+              onClick={logout}
+              className="text-xs bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">
+              Déconnexion
+            </button>
+          </div>
+        </div>
 
         {/* Champ ajout */}
         <div className="flex gap-2 mb-6">
           <input
             type="text"
             placeholder="Nouvelle tâche..."
-            className="flex-1 border border-gray-300 rounded-lg px-4 py-2 text-sm
-                       focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-1 border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <button
-            className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium
-                       px-4 py-2 rounded-lg transition"
-          >
+            className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition">
             Ajouter
           </button>
         </div>
