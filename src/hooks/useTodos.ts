@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Todo } from "@/types/todo";
-import { fetchTodos, createTodo, deleteTodo } from "@/lib/api";
+import { fetchTodos, createTodo, deleteTodo, updateTodo } from "@/lib/api";
 
 export function useTodos() {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -17,7 +17,7 @@ export function useTodos() {
     setTodos((prev) => [...prev, newTodo]);
   };
   const modif = async (id: string, title: string) => {
-    const updatedTodo = await createTodo(title);
+    const updatedTodo = await updateTodo(id, title);
     setTodos((prev) => prev.map((t) => (t.id === id ? updatedTodo : t)));
   };
 

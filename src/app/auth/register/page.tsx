@@ -36,7 +36,7 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-6 text-center">S'inscrire</h1>
+        <h1 className="text-2xl text-black font-bold mb-6 text-center">S'inscrire</h1>
 
         {error && (
           <p className="text-red-500 text-sm mb-4 text-center">{error}</p>
@@ -46,7 +46,7 @@ export default function RegisterPage() {
           <input
             type="text"
             placeholder="Nom"
-            className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border text-black border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
             required
@@ -54,7 +54,7 @@ export default function RegisterPage() {
           <input
             type="email"
             placeholder="Email"
-            className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border text-black border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
             required
@@ -62,7 +62,7 @@ export default function RegisterPage() {
           <input
             type="password"
             placeholder="Mot de passe"
-            className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border text-black border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={form.password}
             onChange={(e) => setForm({ ...form, password: e.target.value })}
             required
@@ -70,7 +70,7 @@ export default function RegisterPage() {
           <input
             type="password"
             placeholder="Confirmer le mot de passe"
-            className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border text-black border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={form.confirmPassword}
             onChange={(e) => setForm({ ...form, confirmPassword: e.target.value })}
             required
@@ -84,7 +84,7 @@ export default function RegisterPage() {
           </button>
         </form>
 
-        <p className="text-center text-sm mt-4">
+        <p className="text-center text-black text-sm mt-4">
           Déjà inscrit ?{" "}
           <Link href="/auth/login" className="text-blue-600 hover:underline">
             Se connecter
